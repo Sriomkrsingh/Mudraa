@@ -1,0 +1,14 @@
+code,fallback_rate_per_usd,tier
+USD,1,A
+EUR,0.92,A
+GBP,0.79,B
+JPY,150,B
+CHF,0.9,B
+CAD,1.36,B
+AUD,1.5,B
+SGD,1.35,B
+INR,83.5,C
+BRL,5.0,C
+MXN,17,C
+ZAR,18.5,C
+AED,3.67,C
