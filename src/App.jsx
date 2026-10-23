@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { InputBox, RouteCard } from './components'
 import useRates from './hooks/useRates'
 import './index.css'
+const BG_IMAGE =
+  'https://images.pexels.com/photos/7412098/pexels-photo-7412098.jpeg?auto=compress&cs=tinysrgb&w=1600'
 
 function App() {
   const [amount, setAmount] = useState(1000)
@@ -33,10 +35,13 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 flex justify-center px-4 py-10">
-      <div className="w-full max-w-md">
+   <div
+  className="min-h-screen bg-slate-950 bg-cover bg-center bg-fixed flex justify-center items-start px-4 py-10"
+  style={{ backgroundImage: `url(${BG_IMAGE})` }}>
+    
+      <div className="w-full max-w-md bg-slate-900 border border-slate-700 rounded-2xl p-5 shadow-2xl">
         <h1 className="text-2xl font-bold text-white">Mudra Engine</h1>
-        <p className="text-slate-400 text-sm mb-3">Cheapest route for your money, not just the direct rate.</p>
+        <p className="text-slate-300 text-sm mb-3">Cheapest route for your money, not just the direct rate.</p>
 
         <div className="flex items-center justify-between text-xs mb-4">
           <span className={source === 'live' ? 'text-emerald-400' : 'text-amber-400'}>
