@@ -1,12 +1,9 @@
-// JavaScript port of MudraEngine.cpp
-// Edge weight = -ln(midRate * (1 - fee)); Dijkstra then maximises the product of rates.
 
-// Fee (fraction) per tier pair. Thin-to-thin trades are the most expensive.
 const FEE = { AA: 0.002, AB: 0.003, AC: 0.008, BB: 0.006, BC: 0.015, CC: 0.03 }
 
 export class MudraEngine {
   constructor(currencies) {
-    this.currencies = currencies // { USD: { rate, tier }, ... }
+    this.currencies = currencies 
     this.names = Object.keys(currencies)
     this.cache = new Map()
     this.graph = this.#buildGraph()
