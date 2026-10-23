@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { MudraEngine } from '../engine/MudraEngine'
 
-// Live mid-market rates (USD base). Tried in order; first success wins.
+
 const SOURCES = [
   async () => {
     const r = await fetch('https://open.er-api.com/v6/latest/USD')
@@ -10,7 +10,7 @@ const SOURCES = [
     return { rates: d.rates, updatedAt: d.time_last_update_utc }
   },
   async () => {
-    // same API the chai-aur-react project used
+   
     const r = await fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json')
     const d = await r.json()
     const rates = {}
@@ -21,13 +21,12 @@ const SOURCES = [
 
 async function fetchLive() {
   for (const src of SOURCES) {
-    try { return await src() } catch { /* try next source */ }
+    try { return await src() } catch {}
   }
   throw new Error('all live sources failed')
 }
 
-// Builds an engine: rates.csv gives currencies + fee tiers + offline fallback
-// rates; live rates override the fallback numbers whenever the network works.
+
 async function buildEngine() {
   const csv = await (await fetch('/rates.csv')).text()
   const currencies = MudraEngine.parseCsv(csv)
@@ -38,11 +37,11 @@ async function buildEngine() {
       if (live.rates[code] > 0) currencies[code].rate = live.rates[code]
     }
     source = 'live'; updatedAt = live.updatedAt
-  } catch { /* keep fallback rates */ }
+  } catch {  }
   return { engine: new MudraEngine(currencies), source, updatedAt, error: null }
 }
 
-// Replaces useCurrencyInfo from the chai project.
+
 function useRates() {
   const [state, setState] = useState({ engine: null, source: 'loading', updatedAt: null, error: null })
 
