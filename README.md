@@ -137,6 +137,3 @@ INR,83.5,C
 - [ ] Unit tests for the engine
 - [ ] Deploy to Vercel / Netlify
 
-## 🙏 Acknowledgements
-
-UI structure inspired by the currency convertor project in [chai-aur-react](https://github.com/hiteshchoudhary/chai-aur-react) by Hitesh Choudhary. Rates from open.er-api.com and fawazahmed0/currency-api.
